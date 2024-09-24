@@ -1,0 +1,8 @@
+@mixin title-shadow($offset-x: 2px, $offset-y: 2px, $color: var(--color-green-2), $shadow-opacity: 0.6) {
+  text-shadow:
+    -$offset-x 0 $color,
+    -$offset-x 0 $color,
+    -$offset-x -1px 0 $color,
+    $offset-x $offset-y 0 $color,
+    $offset-x $offset-y 5px rgba(0, 0, 0, $shadow-opacity);
+}

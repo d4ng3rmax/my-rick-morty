@@ -1,0 +1,15 @@
+<div class="favorites-container">
+  <h2>Lista de Favoritos</h2>
+  <div *ngIf="favorites.length > 0; else noFavorites">
+    <div *ngFor="let character of favorites" class="favorite-card">
+      <img [src]="character.image" alt="{{ character.name }}" />
+      <h3>{{ character.name }}</h3>
+      <p>Gênero: {{ character.gender }}</p>
+      <button (click)="removeFavorite(character.id)">Remover</button>
+    </div>
+  </div>
+
+  <ng-template #noFavorites>
+    <p>Nenhum personagem favoritado.</p>
+  </ng-template>
+</div>

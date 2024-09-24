@@ -1,0 +1,21 @@
+<header class="app-header">
+  <div class="logo">
+    <img src="assets/images/logo.png" alt="Rick and Morty" />
+  </div>
+  <nav class="menu">
+    <ul>
+      <li>
+        <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+          class="menu-item home">
+          <img [src]="pathIcons + '/house-solid.svg'" alt="Home Icon" class="menu-icon"> Início
+        </a>
+      </li>
+      <li>
+        <a routerLink="/favorites" routerLinkActive="active" class="menu-item favorites">
+          <img [src]="pathIcons + '/heart-solid.svg'" alt="Home Icon" class="menu-icon"> Favoritos
+          <span class="favorites-count">{{ favoritesCount }}</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>
