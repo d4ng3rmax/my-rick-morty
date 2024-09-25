@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Icons } from '@icons/icons'; // Certifique-se de que o caminho está correto
+import { Icons } from '@icons/icons';
 import { FavoritesService } from '../../services/favorites.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { FavoritesService } from '../../services/favorites.service';
 })
 export class FavoritesListComponent implements OnInit {
   favorites: any[] = [];
-  favoriteIconFilled = Icons.heartSolid; // Adicione o ícone preenchido aqui
+  favoriteIconFilled = Icons.heartSolid;
 
   constructor(private favoritesService: FavoritesService) { }
 

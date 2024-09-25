@@ -14,10 +14,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 @NgModule({
   declarations: [
     AppComponent,
-    FavoritesListComponent,
-    HeaderComponent,
-    HomeComponent,
-    SearchCharacterComponent
+    HeaderComponent
   ],
   imports: [
     AppRoutingModule,
