@@ -2,7 +2,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { delay } from 'rxjs/operators';
+
+interface ApiResponse {
+  info: {
+    count: number;
+    pages: number;
+    next: string;
+    prev: string;
+  };
+  results: any[];
+}
 
 @Injectable({
   providedIn: 'root'
@@ -13,22 +22,15 @@ export class RickandmortyService {
 
   constructor(private http: HttpClient) { }
 
-  getCharactersByName(name: string, page: number): Observable<any[]> {
-    return this.http.get<any>(`${this.apiUrl}/?name=${name}&page=${page}`).pipe(
-      map(response => response.results || [])
-    );
+  getCharactersByName(name: string, page: number): Observable<ApiResponse> {
+    return this.http.get<ApiResponse>(`${this.apiUrl}?name=${name}&page=${page}`);
   }
 
-  getAllCharacters(): Observable<any[]> {
-    return this.http.get<any>(`${this.apiUrl}`).pipe(
-      map(response => response.results || [])
-    );
+  getAllCharacters(): Observable<ApiResponse> {
+    return this.http.get<ApiResponse>(this.apiUrl);
   }
 
-  getCharactersByPage(page: number): Observable<any[]> {
-    return this.http.get<any>(`${this.apiUrl}?page=${page}`).pipe(
-      delay(1200),
-      map(response => response.results || [])
-    );
+  getCharactersByPage(page: number): Observable<ApiResponse> {
+    return this.http.get<ApiResponse>(`${this.apiUrl}?page=${page}`);
   }
 }

@@ -1,15 +1,29 @@
-<div class="favorites-container">
-  <h2>Lista de Favoritos</h2>
-  <div *ngIf="favorites.length > 0; else noFavorites">
-    <div *ngFor="let character of favorites" class="favorite-card">
-      <img [src]="character.image" alt="{{ character.name }}" />
-      <h3>{{ character.name }}</h3>
-      <p>Gênero: {{ character.gender }}</p>
-      <button (click)="removeFavorite(character.id)">Remover</button>
+<div class="search-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Lista de Favoritos</h2>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="favorites.length > 0; else noFavorites" class="container">
+    <div class="grid-wrapper">
+      <div class="card" *ngFor="let character of favorites">
+        <img [src]="favoriteIconFilled" class="favorite-icon" (click)="removeFavorite(character.id)"
+          alt="Remover dos favoritos">
+        <img [src]="character.image" class="card-img-top" alt="{{ character.name }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ character.name }}</h5>
+          <p class="card-text">Gênero: {{ character.gender }}</p>
+        </div>
+      </div>
     </div>
   </div>
 
   <ng-template #noFavorites>
-    <p>Nenhum personagem favoritado.</p>
+    <div class="container">
+      <p>Nenhum personagem favoritado.</p>
+    </div>
   </ng-template>
 </div>
